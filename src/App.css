@@ -1,7 +1,26 @@
+.test {
+  display: flex;
+  transform: translateY(50px) scale(1.25);
+
+  transition: all ease-in-out 0.25s;
+}
+.test-in {
+  transform: translateY(50px) scale(1);
+}
+.test-up {
+  transform: translateY(0px) scale(1);
+}
+
+.test-active {
+  transform: translateY(0px) scale(1) !important;
+}
+
+html {
+  overflow: hidden;
+  background-color: #505050;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -40,3 +59,45 @@
 .read-the-docs {
   color: #888;
 }
+
+/* .................. */
+
+.loading {
+  position: absolute;
+  background-color: #242424;
+  top: 0;
+  width: 100dvw;
+  height: 100dvh;
+  opacity: 100%;
+  transition: opacity ease-out 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.loading__off {
+  opacity: 0%;
+}
+.loading__span {
+  position: relative;
+  width: 200px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #888;
+}
+.loading__span--inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  transition: all ease-in-out 0.4s;
+}
+.loading-active {
+  width: 200px !important;
+  background-color: whitesmoke;
+}
+
+/* ............................................................................ */
