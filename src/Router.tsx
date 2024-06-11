@@ -1,8 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { Home } from "./pages/Home";
 import { ThemeProvider } from "./shadcn/theme-provider";
-
-import { Home } from "./Home";
 
 export function Router() {
   const router = createBrowserRouter([
