@@ -1,4 +1,4 @@
-import { easeOut, motion } from "framer-motion";
+import { easeInOut, easeOut, motion } from "framer-motion";
 import ReactDOM from "react-dom/client";
 
 import { LoadingLogo } from "./components/Logo.tsx";
@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         delay: 0.5,
         ease: easeOut,
       }}
-      className="absolute z-40 w-full h-full flex justify-center items-center"
+      className="absolute z-50 w-full h-full flex justify-center items-center"
     >
       <motion.div
         initial={{ opacity: 1 }}
@@ -36,9 +36,21 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <LoadingLogo />
       </motion.div>
     </motion.div>
-    <div className="fixed top-0 left-0 -z-50 inset-0 h-full w-full dark:bg-blackRgba  bg-whiteRgba bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px] shadow-inner">
+    <motion.div
+      initial={{ translateY: 100, scale: 2 }}
+      animate={{
+        translateY: 0,
+        scale: 1,
+      }}
+      transition={{
+        duration: 1.5,
+        delay: 0.5,
+        ease: easeInOut,
+      }}
+      className="opacity-75 fixed top-0 left-0 -z-50 inset-0 h-full w-full dark:bg-blackRgba  bg-whiteRgba bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px] shadow-inner"
+    >
       <BackgroundGradientAnimation />
-    </div>
+    </motion.div>
     <Router />
   </>
 );

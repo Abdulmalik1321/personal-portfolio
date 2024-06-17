@@ -12,14 +12,14 @@ import { Menu } from "lucide-react";
 
 export function NavBar() {
   return (
-    <nav className="fixed top-0 flex items-center justify-between w-full p-6 md:p-12 bg-gradient-to-b from-background to-transparent">
+    <nav className="fixed top-0 flex items-center justify-between w-full p-6 md:p-12 z-40 bg-gradient-to-b from-background to-transparent">
       <Logo />
       <div className="hidden items-center gap-5 text-xl md:flex">
-        <Link to={"/"}>Home</Link>
-        <Link to={"/"}>About us</Link>
-        <Link to={"/"}>Contant us</Link>
-        <Link to={"/"}>Blog</Link>
-        <Link to={"/"}>Careers</Link>
+        <Link to={"/"}>الرئيسية</Link>
+        <Link to={"/"}>نبذة عنا</Link>
+        <Link to={"/"}>تواصل معنا</Link>
+        <Link to={"/"}>المدونة</Link>
+        <Link to={"/"}>الوظائف</Link>
       </div>
 
       <div className="flex items-center gap-2 md:hidden">
@@ -31,19 +31,19 @@ export function NavBar() {
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuItem>
-              <Link to={"/"}>Home</Link>
+              <Link to={"/"}>الرئيسية</Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link to={"/about-us"}>About us</Link>
+              <Link to={"/about-us"}>نبذة عنا</Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link to={"/contant-us"}>Contant us</Link>
+              <Link to={"/contant-us"}>تواصل معنا</Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link to={"/blog"}>Blog</Link>
+              <Link to={"/blog"}>المدونة</Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link to={"/careers"}>Careers</Link>
+              <Link to={"/careers"}>الوظائف</Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

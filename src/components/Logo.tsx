@@ -6,7 +6,7 @@ export function Logo() {
         src="https://cdn.icon-icons.com/icons2/2389/PNG/512/laravel_horizon_logo_icon_145119.png"
         alt="logo"
       />
-      <h1 className="text-xl lg:text-3xl">Advanced Horizon</h1>
+      <h1 className="text-xl lg:text-3xl whitespace-nowrap">الأفق المتقدم</h1>
     </div>
   );
 }
@@ -19,7 +19,7 @@ export function LoadingLogo() {
         src="https://cdn.icon-icons.com/icons2/2389/PNG/512/laravel_horizon_logo_icon_145119.png"
         alt="logo"
       />
-      <h1 className="text-xl lg:text-5xl">Advanced Horizon</h1>
+      <h1 className="text-xl lg:text-5xl">الأفق المتقدم</h1>
     </div>
   );
 }
