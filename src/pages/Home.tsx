@@ -10,7 +10,6 @@ export function Home() {
       <Hero />
 
       <Services />
-      <Hero />
     </main>
   );
 }

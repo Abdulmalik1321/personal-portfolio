@@ -6,6 +6,7 @@ import { easeInOut, motion } from "framer-motion";
 import * as React from "react";
 import { Bar, BarChart, ResponsiveContainer } from "recharts";
 import { Logo } from "./Logo";
+import { Button } from "@/shadcn/ui/button";
 
 const data = [
   {
@@ -73,7 +74,7 @@ export function Hero() {
   };
 
   return (
-    <section className="h-screen w-full flex flex-col md:flex-row md:items-center  p-6 pt-24 md:mt-0 md:p-12 snap-always snap-center relative">
+    <section className="h-screen w-full flex flex-col md:flex-row md:items-center  p-6 pt-28 md:mt-0 md:p-12 snap-always snap-center relative">
       <div className="w-full md:w-1/2">
         <motion.div
           className="w-full"
@@ -94,7 +95,7 @@ export function Hero() {
               delay: 3.5,
               ease: easeInOut,
             }}
-            className="text-secondary-foreground text-xs md:text-lg md:w-[90%]"
+            className="text-secondary-foreground text-sm md:text-lg md:w-[90%]"
           >
             اكتشف تأثير الذكاء الاصطناعي والحلول البرمجية على الصناعات فهو يعيد
             تشكيل القطاعات، ويبسط العمليات، ويدفع الشركات نحو نجاح لا مثيل له في
@@ -143,10 +144,13 @@ export function Hero() {
             </Badge>
           </motion.div>
         </div>
-        {/* <div className="hidden md:flex">
+        {/* <div className="relative flex md:w-[75%] mt-5 items-center">
           <Input placeholder="Email" />
+          <Button className="absolute left-2 rounded-sm text-xs p-3 h-[65%]">
+            احجز استشارتك المجانية اليوم
+          </Button>
         </div> */}
-        <div className="absolute top-[77%] md:top-[85%] w-[90%] md:w-[50%]">
+        {/* <div className="absolute top-[77%] md:top-[85%] w-[90%] md:w-[50%]">
           <motion.div
             initial={{ opacity: "0%" }}
             animate={{ opacity: "100%" }}
@@ -191,39 +195,17 @@ export function Hero() {
                 animate={{ translateX: "0%" }}
                 transition={{
                   repeat: Infinity,
-                  duration: 40,
+                  duration: 5,
                   delay: 5,
                   ease: "linear",
                 }}
                 className="w-fit  gap-10 md:gap-12 flex items-center relative h-16 opacity-35"
-              >
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-                <TestLogo />
-              </motion.div>
+              ></motion.div>
             </div>
           </motion.div>
-        </div>
+        </div> */}
       </div>
-      <div className="flex items-center justify-center w-full md:w-[50%] h-[50%] md:h-[80%] mt-5 md:mt-0 ">
+      <div className="flex items-center justify-center w-full md:w-[50%] h-[50%] md:h-[80%] mt-10 md:mt-0 ">
         <motion.div
           className="relative flex justify-start items-end bg-[#eff2fb] rounded-xl md:rounded-3xl w-[50%] h-[75%] bg-no-repeat bg-center bg-cover  ml-[12%]"
           initial={{ opacity: 0, translateX: -20, translateY: 30, rotate: -5 }}
@@ -288,14 +270,11 @@ export function Hero() {
               ease: easeInOut,
             }}
           >
-            <div className="w-full h-full">
-              <div>
-                <p className="text-xs md:text-xl">اجمالي النمو</p>
-                <p className="text-[9px] md:text-base">
-                  نسبة نمو عملائنا خلال العام:
-                </p>
-              </div>
-              <div dir="ltr" className="w-full h-[50%] md:h-[70%] flex ">
+            <div className="w-full h-full flex items-center">
+              <div
+                dir="ltr"
+                className="w-full h-[80%] md:h-[90%] flex items-center"
+              >
                 <div className="h-full flex flex-col justify-between text-[9px] md:text-base">
                   <div>100%</div>
                   <div>80%</div>

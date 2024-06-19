@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         delay: 0.5,
         ease: easeOut,
       }}
-      className="absolute z-50 w-full h-full flex justify-center items-center"
+      className="fixed top-0 z-50 w-full h-full flex justify-center items-center"
     >
       <motion.div
         initial={{ opacity: 1 }}
