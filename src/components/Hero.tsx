@@ -1,66 +1,16 @@
 import AnimatedCharacters from "@/aimations/text-animation";
 import { Badge } from "@/shadcn/ui/badge";
-import { Input } from "@/shadcn/ui/input";
 import { easeInOut, motion } from "framer-motion";
-
-import * as React from "react";
-import { Bar, BarChart, ResponsiveContainer } from "recharts";
-import { Logo } from "./Logo";
-import { Button } from "@/shadcn/ui/button";
-
-const data = [
-  {
-    goal: 400,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 278,
-  },
-  {
-    goal: 189,
-  },
-  {
-    goal: 239,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 278,
-  },
-  {
-    goal: 189,
-  },
-  {
-    goal: 349,
-  },
-];
 
 export function Hero() {
   const placeholderText = [
     {
       type: "span",
       text: "تحويل الأعمال باستخدام",
-      //   text: "Transforming Businesses",
     },
     {
       type: "span",
       text: "حلول الذكاء الاصطناعي والبرمجيات",
-      //   text: "with AI and Software Solutions",
     },
   ];
 
@@ -97,9 +47,9 @@ export function Hero() {
             }}
             className="text-secondary-foreground text-sm md:text-lg md:w-[90%]"
           >
-            اكتشف تأثير الذكاء الاصطناعي والحلول البرمجية على الصناعات فهو يعيد
-            تشكيل القطاعات، ويبسط العمليات، ويدفع الشركات نحو نجاح لا مثيل له في
-            مشهد يتطور باستمرار.
+            اكتشف تأثير الذكاء الاصطناعي والحلول البرمجية المبتكرة على الصناعات
+            فهو يعيد تشكيل القطاعات، ويبسط العمليات، ويدفع الشركات نحو نجاح لا
+            مثيل له في مشهد يتطور باستمرار.
           </motion.p>
         </motion.div>
         <div className="flex gap-2 mt-2 md:mt-5">
