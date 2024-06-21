@@ -3,6 +3,7 @@ import {
   motion,
   useInView,
   useScroll,
+  useSpring,
   useTransform,
 } from "framer-motion";
 import { useRef } from "react";
@@ -16,12 +17,23 @@ export function Services() {
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
-  const x = useTransform(scrollYProgress, [0.1, 1], ["1%", "95%"]);
+  const x = useTransform(
+    useSpring(scrollYProgress, { stiffness: 1000, damping: 100 }),
+    [0.1, 1],
+    ["1%", "95%"]
+  );
 
   const placeholderText = [
     {
       type: "span",
       text: "نحن نقدم جميع الخدمات التقنية التي يحتاجها نشاط عملك 👈",
+    },
+  ];
+
+  const placeholderText2 = [
+    {
+      type: "span",
+      text: "نحن شركة ناشئة في مجال تقنية المعلومات نسعى لتقديم الحلول والتقنيات المبتكرة لتمكينك من تحقيق اهدافك وطموحاتك",
     },
   ];
 
@@ -38,7 +50,7 @@ export function Services() {
     <section ref={targetRef} className="relative h-[500vh] ">
       <div className="sticky top-0 h-screen w-full flex flex-col items-start justify-start p-6 pt-24 md:p-12 md:pt-32  overflow-hidden">
         <motion.p
-          //   key={isInView ? "inView" : "notInView"} // This line is added
+          key={isInView ? "inView" : "notInView"} // This line is added
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{
@@ -48,8 +60,7 @@ export function Services() {
           }}
           className="text-3xl md:text-5xl font-bold text-center w-full mb-10"
         >
-          خدماتنا✨
-          {/* {isInView ? "test" : "&nbsp;"} */}
+          {isInView ? "خدماتنا✨" : "نبذة عنا 🙋🏻"}
         </motion.p>
         <motion.div style={{ x }} className="flex items-center h-[75%]">
           <div className="w-[105vw] flex justify-center">
@@ -91,19 +102,36 @@ export function Services() {
           </div>
 
           <motion.div
+            id="about-us"
             initial="hidden"
             animate={"visible"}
             variants={container}
-            className="md:w-screen"
+            className="w-[110vw] md:w-screen"
           >
-            <p className="whitespace-nowrap text-3xl md:text-5xl md:leading-normal ">
-              {placeholderText.map((item, index) => {
+            <p className="text-3xl md:text-5xl md:leading-normal text-center w-[90vw] md:w-[50vw]">
+              {placeholderText2.map((item, index) => {
                 return <AnimatedCharactersServices {...item} key={index} />;
               })}
             </p>
           </motion.div>
 
-          <div ref={services} className="flex gap-12 md:gap-24 mr-20">
+          <div
+            ref={services}
+            id="services"
+            className="flex items-center gap-12 md:gap-24 mr-20"
+          >
+            <motion.div
+              initial="hidden"
+              animate={"visible"}
+              variants={container}
+              className="md:w-screen"
+            >
+              <p className="whitespace-nowrap text-3xl md:text-5xl md:leading-normal ">
+                {placeholderText.map((item, index) => {
+                  return <AnimatedCharactersServices {...item} key={index} />;
+                })}
+              </p>
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 1.25 }}
               whileInView={{ opacity: 1, scale: 1 }}
