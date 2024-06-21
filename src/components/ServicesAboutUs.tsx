@@ -10,7 +10,7 @@ import { useRef } from "react";
 
 import AnimatedCharactersServices from "@/aimations/text-animation-services";
 
-export function Services() {
+export function ServicesAboutUs() {
   const targetRef = useRef(null);
   const services = useRef(null);
   const isInView = useInView(services);

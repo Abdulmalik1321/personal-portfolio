@@ -1,6 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { NavBar } from "@/components/NavBar";
-import { Services } from "@/components/Services";
+import { ServicesAboutUs } from "@/components/ServicesAboutUs";
 
 export function Home() {
   return (
@@ -9,7 +9,7 @@ export function Home() {
 
       <Hero />
 
-      <Services />
+      <ServicesAboutUs />
     </main>
   );
 }
