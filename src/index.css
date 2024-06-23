@@ -123,3 +123,7 @@
   50%  { transform: translateX(15%); }
   100%   { transform: translateX (0); }    
 }
+
+.bg-background-op{
+  background-color: rgba(19, 18, 28, 0.5);
+}

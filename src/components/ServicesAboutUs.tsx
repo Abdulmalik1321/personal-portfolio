@@ -7,7 +7,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { useRef } from "react";
-
+import { scroll } from "framer-motion";
 import AnimatedCharactersServices from "@/aimations/text-animation-services";
 
 export function ServicesAboutUs() {
@@ -17,16 +17,19 @@ export function ServicesAboutUs() {
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
+
+  scroll((progress) => console.log(scrollYProgress.current));
+
   const x = useTransform(
     useSpring(scrollYProgress, { stiffness: 1000, damping: 100 }),
     [0.1, 1],
-    ["1%", "95%"]
+    ["1%", "91.5%"]
   );
 
   const placeholderText = [
     {
       type: "span",
-      text: "نحن نقدم جميع الخدمات التقنية التي يحتاجها نشاط عملك 👈",
+      text: "ونقدم جميع الخدمات التقنية التي قد يحتاجها نشاط عملك 👈",
     },
   ];
 
@@ -47,7 +50,7 @@ export function ServicesAboutUs() {
   };
 
   return (
-    <section ref={targetRef} className="relative h-[500vh] ">
+    <section id="about-us" ref={targetRef} className="relative h-[500vh] ">
       <div className="sticky top-0 h-screen w-full flex flex-col items-start justify-start p-6 pt-24 md:p-12 md:pt-32  overflow-hidden">
         <motion.p
           key={isInView ? "inView" : "notInView"} // This line is added
@@ -72,10 +75,10 @@ export function ServicesAboutUs() {
                 delay: 0.25,
                 ease: easeInOut,
               }}
-              className="relative w-[75%] md:w-[35%]"
+              className="relative w-[75%] md:w-[30%]"
             >
               <img
-                src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718725378/Untitled-1_in2ofd.png"
+                src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1719007330/man-pointing_kilgot.png"
                 alt="man-pointing"
                 className="w-full"
               />
@@ -102,7 +105,6 @@ export function ServicesAboutUs() {
           </div>
 
           <motion.div
-            id="about-us"
             initial="hidden"
             animate={"visible"}
             variants={container}
@@ -117,7 +119,6 @@ export function ServicesAboutUs() {
 
           <div
             ref={services}
-            id="services"
             className="flex items-center gap-12 md:gap-24 mr-20"
           >
             <motion.div
@@ -140,12 +141,12 @@ export function ServicesAboutUs() {
                 delay: 0.25,
                 ease: easeInOut,
               }}
-              className="w-[75vw] md:w-[40vw] h-[55vh] md:h-[50vh] relative shadow-xl bg-gray-900 border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
+              className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
             >
               <img
                 src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
                 alt="circuit-board-pattern"
-                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[3%]"
+                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[2%]"
               />
               <div className="w-full flex justify-center mb-5">
                 <img
@@ -158,7 +159,7 @@ export function ServicesAboutUs() {
                 استشارات تقنية المعلومات
               </h1>
 
-              <p className="font-normal text-base md:text-3xl text-slate-500 mb-4 ">
+              <p className="font-normal text-base md:text-3xl text-slate-400 mb-4 ">
                 توفر خدماتنا الاستشارية المجانية في مجال تقنية المعلومات،
                 الارشاد الإستراتيجي المصمم خصيصًا لتلبية احتياجاتك الفريدة.
                 بدءًا من تحسين البنية التحتية لتقنية المعلومات الخاصة بك وحتى
@@ -175,12 +176,12 @@ export function ServicesAboutUs() {
                 delay: 0.25,
                 ease: easeInOut,
               }}
-              className="w-[75vw] md:w-[40vw] h-[55vh] md:h-[50vh] relative shadow-xl bg-gray-900 border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
+              className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
             >
               <img
                 src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
                 alt="circuit-board-pattern"
-                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[3%]"
+                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[2%]"
               />
               <div className="w-full flex justify-center mb-5">
                 <img
@@ -193,7 +194,7 @@ export function ServicesAboutUs() {
                 تطوير المواقع الإلكترونية
               </h1>
 
-              <p className="font-normal text-base md:text-3xl text-slate-500 mb-4 ">
+              <p className="font-normal text-base md:text-3xl text-slate-400 mb-4 ">
                 ستساعدك خدمات تطوير المواقع الإلكترونية لدينا في إنشاء تواجد
                 مؤثر عبر الإنترنت والوصول إلى جمهورك المستهدف بفعالية. سواء كنت
                 تبحث عن تصميم موقع ويب مبتكر أو تطوير تطبيق متميز، نحن نجمع بين
@@ -209,12 +210,12 @@ export function ServicesAboutUs() {
                 delay: 0.25,
                 ease: easeInOut,
               }}
-              className="w-[75vw] md:w-[40vw] h-[55vh] md:h-[50vh] relative shadow-xl bg-gray-900 border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
+              className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
             >
               <img
                 src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
                 alt="circuit-board-pattern"
-                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[3%]"
+                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[2%]"
               />
               <div className="w-full flex justify-center mb-5">
                 <img
@@ -227,7 +228,7 @@ export function ServicesAboutUs() {
                 تطوير البرمجيات المخصصة
               </h1>
 
-              <p className="font-normal text-base md:text-3xl text-slate-500 mb-4 ">
+              <p className="font-normal text-base md:text-3xl text-slate-400 mb-4 ">
                 ان خدمة تطوير البرمجيات المخصصة. تقدم حلول برمجية تتوافق مع
                 احتياجات عملك الفريدة. سواء كنت تحتاج إلى إدارة للمخزون، أو
                 إدارة لعلاقات العملاء، أو إعداد تقارير مالية تلقائية، فلدينا كل
@@ -243,12 +244,12 @@ export function ServicesAboutUs() {
                 delay: 0.25,
                 ease: easeInOut,
               }}
-              className="w-[75vw] md:w-[40vw] h-[55vh] md:h-[50vh] relative shadow-xl bg-gray-900 border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
+              className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
             >
               <img
                 src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
                 alt="circuit-board-pattern"
-                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[3%]"
+                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[2%]"
               />
               <div className="w-full flex justify-center mb-5">
                 <img
@@ -261,7 +262,7 @@ export function ServicesAboutUs() {
                 الذكاء الاصطناعي والاتمتة
               </h1>
 
-              <p className="font-normal text-base md:text-3xl text-slate-500 mb-4 ">
+              <p className="font-normal text-base md:text-3xl text-slate-400 mb-4 ">
                 استخدم البرمجيات الاوتوماتيكية والأدخال الآلي للبيانات واسمح
                 للأنظمة الذكية بمعالجة المهام المتكررة وتعزيز الدقة والإنتاجية،
                 بينما يركز فريقك على الأمور المهمة.
@@ -276,12 +277,12 @@ export function ServicesAboutUs() {
                 delay: 0.25,
                 ease: easeInOut,
               }}
-              className="w-[75vw] md:w-[40vw] h-[55vh] md:h-[50vh] relative shadow-xl bg-gray-900 border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
+              className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
             >
               <img
                 src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
                 alt="circuit-board-pattern"
-                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[3%]"
+                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[2%]"
               />
               <div className="w-full flex justify-center mb-5">
                 <img
@@ -294,7 +295,7 @@ export function ServicesAboutUs() {
                 حلول التخزين
               </h1>
 
-              <p className="font-normal text-base md:text-3xl text-slate-500 mb-4 ">
+              <p className="font-normal text-base md:text-3xl text-slate-400 mb-4 ">
                 تظمن حلول التخزين لدينا بأن تكون بياناتك آمنة، وسهلة الوصول
                 والإدارة. وتتيح لموظفينك تخزين البيانات المهمه على خادم شبكة
                 مركزي، لتوفير نقطة وصول مركزية آمنة لمجموعة كبيرة من البيانات
@@ -310,12 +311,12 @@ export function ServicesAboutUs() {
                 delay: 0.25,
                 ease: easeInOut,
               }}
-              className="w-[75vw] md:w-[40vw] h-[55vh] md:h-[50vh] relative shadow-xl bg-gray-900 border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
+              className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
             >
               <img
                 src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
                 alt="circuit-board-pattern"
-                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[3%]"
+                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[2%]"
               />
               <div className="w-full flex justify-center mb-5">
                 <img
@@ -328,7 +329,7 @@ export function ServicesAboutUs() {
                 صيانة تقنية المعلومات
               </h1>
 
-              <p className="font-normal text-base md:text-3xl text-slate-500 mb-4 ">
+              <p className="font-normal text-base md:text-3xl text-slate-400 mb-4 ">
                 إن الصيانة الاستباقية لتقنية المعلومات أمر مهم لتحقيق نجاح
                 الأعمال. من خلال تنفيذ الفحوصات المنتظمة والتدابير الوقائية،
                 يمكنك تقليل وقت التوقف عن العمل وتعزيز الأداء وضمان استقرار

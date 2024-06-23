@@ -1,12 +1,13 @@
 import AnimatedCharacters from "@/aimations/text-animation";
 import { Badge } from "@/shadcn/ui/badge";
+import { Button } from "@/shadcn/ui/button";
 import { easeInOut, motion } from "framer-motion";
 
 export function Hero() {
   const placeholderText = [
     {
       type: "span",
-      text: "تحويل الأعمال باستخدام",
+      text: "تمكين الأعمال باستخدام",
     },
     {
       type: "span",
@@ -24,7 +25,10 @@ export function Hero() {
   };
 
   return (
-    <section className="h-screen w-full flex flex-col md:flex-row md:items-center  p-6 pt-28 md:mt-0 md:p-12 snap-always snap-center relative">
+    <section
+      id="hero"
+      className="h-screen w-full flex flex-col md:flex-row md:items-center p-6 pt-28 md:mt-0 md:p-12 relative"
+    >
       <div className="w-full md:w-1/2">
         <motion.div
           className="w-full"
@@ -47,12 +51,12 @@ export function Hero() {
             }}
             className="text-secondary-foreground text-sm md:text-lg md:w-[90%]"
           >
-            اكتشف تأثير الذكاء الاصطناعي والحلول البرمجية المبتكرة على الصناعات
-            فهو يعيد تشكيل القطاعات، ويبسط العمليات، ويدفع الشركات نحو نجاح لا
-            مثيل له في مشهد يتطور باستمرار.
+            تمكين الصناعات باستخدام الذكاء الاصطناعي والحلول البرمجية المبتكرة:
+            إحداث ثورة في القطاعات، وتبسيط العمليات، ودفع الشركات إلى نجاح غير
+            مسبوق في مشهد دائم التطور.🚀🌟
           </motion.p>
         </motion.div>
-        <div className="flex gap-2 mt-2 md:mt-5">
+        <div className="flex gap-2 mt-5">
           <motion.div
             initial={{ opacity: 0, translateY: 20 }}
             animate={{ opacity: 1, translateY: 0 }}
@@ -62,11 +66,19 @@ export function Hero() {
               ease: easeInOut,
             }}
           >
-            <Badge className="text-xs md:text-base px-2.5 py-0.5  font-normal gap-1">
-              <strong>⦿</strong>الذكاء الاصطناعي
-            </Badge>
+            <Button
+              onClick={() => {
+                const targetElement = document.getElementById(
+                  "ContactUs"
+                ) as HTMLDivElement;
+                targetElement.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="text-xs md:text-base px-2.5 py-2 h-auto font-normal gap-1"
+            >
+              📌 احجز استشارة مجانية الان!
+            </Button>
           </motion.div>
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, translateY: 20 }}
             animate={{ opacity: 1, translateY: 0 }}
             transition={{
@@ -92,7 +104,7 @@ export function Hero() {
             <Badge className="text-xs md:text-base px-2.5 py-0.5 font-normal gap-1">
               <strong>⦿</strong>البرمجيات
             </Badge>
-          </motion.div>
+          </motion.div> */}
         </div>
         {/* <div className="relative flex md:w-[75%] mt-5 items-center">
           <Input placeholder="Email" />
@@ -155,14 +167,14 @@ export function Hero() {
           </motion.div>
         </div> */}
       </div>
-      <div className="flex items-center justify-center w-full md:w-[50%] h-[50%] md:h-[80%] mt-10 md:mt-0 ">
+      <div className="flex items-end pb-12 justify-center w-full md:w-[50%] h-[50%] md:h-[80%] mt-10 md:mt-0 ">
         <motion.div
-          className="relative flex justify-start items-end bg-[#eff2fb] rounded-xl md:rounded-3xl w-[50%] h-[75%] bg-no-repeat bg-center bg-cover  ml-[12%]"
+          className="relative flex justify-center items-end bg-[#eff2fb] rounded-xl md:rounded-3xl w-[50%] h-[75%] bg-no-repeat bg-center bg-cover  ml-[12%]"
           initial={{ opacity: 0, translateX: -20, translateY: 30, rotate: -5 }}
           animate={{ opacity: 1, translateX: 0, translateY: 0, rotate: 0 }}
           transition={{
             duration: 0.5,
-            delay: 4.5,
+            delay: 4.25,
             ease: easeInOut,
           }}
         >
@@ -171,15 +183,15 @@ export function Hero() {
             animate={{ opacity: 1, translateY: 0 }}
             transition={{
               duration: 0.5,
-              delay: 4.75,
+              delay: 4.5,
               ease: easeInOut,
             }}
-            className="w-[90%] z-10"
-            src="https://cdn.arabsstock.com/uploads/images/25289/image-25289-portrait-saudi-arabian-gulf-man-wearing-traditional-saudi--remove-bg-preview.png"
+            className="w-[58%] ml-5 md:ml-8 z-10"
+            src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1719006626/man-reading_m8fabo.png"
             alt="saudi man"
           />
 
-          <span className="absolute text-black text-lg md:text-5xl z-0 top-[35%] md:top-[40%] left-[5%]  opacity-15">
+          <span className="absolute text-black text-lg md:text-5xl z-0 top-[30%] md:top-[35%] left-[5%]  opacity-15">
             طور
             <br />
             منشأتك
@@ -190,7 +202,7 @@ export function Hero() {
             animate={{ opacity: 1, translateY: 0 }}
             transition={{
               duration: 0.5,
-              delay: 5,
+              delay: 4.75,
               ease: easeInOut,
             }}
           >
@@ -216,7 +228,7 @@ export function Hero() {
             }}
             transition={{
               duration: 0.5,
-              delay: 4.5,
+              delay: 4.25,
               ease: easeInOut,
             }}
           >
@@ -242,7 +254,7 @@ export function Hero() {
                     }}
                     transition={{
                       duration: 0.5,
-                      delay: 5,
+                      delay: 4.75,
                       ease: easeInOut,
                     }}
                     className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
@@ -256,7 +268,7 @@ export function Hero() {
                     }}
                     transition={{
                       duration: 0.5,
-                      delay: 5,
+                      delay: 4.75,
                       ease: easeInOut,
                     }}
                     className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
@@ -270,7 +282,7 @@ export function Hero() {
                     }}
                     transition={{
                       duration: 0.5,
-                      delay: 5,
+                      delay: 4.75,
                       ease: easeInOut,
                     }}
                     className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
@@ -284,7 +296,7 @@ export function Hero() {
                     }}
                     transition={{
                       duration: 0.5,
-                      delay: 5,
+                      delay: 4.75,
                       ease: easeInOut,
                     }}
                     className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
@@ -298,7 +310,7 @@ export function Hero() {
                     }}
                     transition={{
                       duration: 0.5,
-                      delay: 5,
+                      delay: 4.75,
                       ease: easeInOut,
                     }}
                     className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
@@ -312,7 +324,7 @@ export function Hero() {
                     }}
                     transition={{
                       duration: 0.5,
-                      delay: 5,
+                      delay: 4.75,
                       ease: easeInOut,
                     }}
                     className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
@@ -326,7 +338,7 @@ export function Hero() {
                     }}
                     transition={{
                       duration: 0.5,
-                      delay: 5,
+                      delay: 4.75,
                       ease: easeInOut,
                     }}
                     className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
@@ -338,18 +350,5 @@ export function Hero() {
         </motion.div>
       </div>
     </section>
-  );
-}
-
-function TestLogo() {
-  return (
-    <div className="flex items-center gap-2 lg:gap-3">
-      <img
-        className="size-6 lg:size-8 invert"
-        src="https://cdn.icon-icons.com/icons2/2389/PNG/512/laravel_horizon_logo_icon_145119.png"
-        alt="logo"
-      />
-      <h1 className="text-sm lg:text-xl whitespace-nowrap">الأفق المتقدم</h1>
-    </div>
   );
 }
