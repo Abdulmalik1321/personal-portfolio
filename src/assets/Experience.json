@@ -1,0 +1,63 @@
+[
+  {
+    "title": "Almanara Trading co",
+    "img": "https://res.cloudinary.com/dbgwe94vv/image/upload/v1727939402/New_Project_5_nn7lws.png",
+    "link": "",
+    "jobTitle": "System Support Coordinator.",
+    "description": "",
+    "items": [
+      "Providing technical support and troubleshooting for system issues.",
+      "Coordinating with other IT staff to resolve complex problems.",
+      "Manage user accounts, roles, and permissions within Oracle system.",
+      "Documenting support activities and system changes.",
+      "Training users in system functionality and best practices."
+    ]
+  },
+  {
+    "title": "Mayyar United Catering co",
+    "img": "https://res.cloudinary.com/dbgwe94vv/image/upload/v1727939403/New_Project_xkxni3.png",
+    "link": "",
+    "jobTitle": "General Accountant.",
+    "description": "",
+    "items": [
+      "Communicated and reconciled with over 150 suppliers to ensure accurate account entries.",
+      "Identified and corrected over 50,000 SAR in incorrect entries.",
+      "Leveraging my programming skills, I Developed and implemented a Python automation script for the ERP system, resulting in a 400% improvement in work efficiency",
+      "Handled daily invoice entries and issued timely payments, maintaining strong supplier relationships.",
+      "Worked directly with suppliers at the company warehouse, ensuring efficient material handling.",
+      "Prepared daily reports detailing received and dispatched materials, providing transparency in warehouse operations."
+    ]
+  },
+  {
+    "title": "SAP Digital Skills Center",
+    "img": "https://res.cloudinary.com/dbgwe94vv/image/upload/v1727939402/New_Project_2_kgcqtg.png",
+    "link": "",
+    "jobTitle": "SAP Young Professionals Program.",
+    "description": "",
+    "items": [
+      "Acquired SAP S/4HANA Cloud and RISE with SAP knowledge through a 2-month intensive program.",
+      "Gained hands-on experience and certifications to become an SAP Associate Consultant.",
+      "Developed soft skills essential for SAP-related roles and engaged in workshops training."
+    ]
+  },
+  {
+    "title": "Saudi Digital Academy",
+    "img": "https://res.cloudinary.com/dbgwe94vv/image/upload/v1727939403/New_Project_3_ncn4lv.png",
+    "link": "",
+    "jobTitle": "C# & React.js full-stack development bootcamp.",
+    "description": "",
+    "items": [
+      "Participating in a 14-week intensive bootcamp focused on C# and web ReactJS.",
+      "Engaging in 520 hours of training, including practical exercises and real-world project work",
+      "Gaining proficiency in C# fundamentals and web development, preparing for roles such as Full-Stack Developer, Web Developer, and more."
+    ]
+  },
+  {
+    "title": "ElectroNex",
+    "img": "https://res.cloudinary.com/dbgwe94vv/image/upload/v1727939402/New_Project_1_n2b9gv.png",
+    "link": "https://electronex.vercel.app/",
+    "jobTitle": "Full-Stack Project",
+    "description": "Developed ElectroNex, an online marketplace for buying and selling new and used electronic devices. The marketplace, built with ASP.NET Core and PostgreSQL in the backend, Typescript and React.js in the frontend. It features clean and aesthetic UI, secure transactions, seller accounts, product pages, and a rating system. Hosted on Azure and Vercel.",
+    "items": []
+  }
+]

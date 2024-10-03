@@ -13,7 +13,8 @@ type TagMap = {
   paragraph: string;
   heading1: string;
   heading2: string;
-  span: string;
+  span1: string;
+  span2: string;
 };
 
 interface AnimatedCharactersProps {
@@ -62,7 +63,15 @@ const AnimatedCharacters: FC<AnimatedCharactersProps> = (props) => {
             }}
             key={index}
           >
-            <motion.span style={{ display: "inline-block" }} variants={item}>
+            <motion.span
+              style={{ display: "inline-block" }}
+              className={`${
+                props.type === "span1"
+                  ? "text-3xl md:text-6xl"
+                  : "text-lg md:text-4xl"
+              }`}
+              variants={item}
+            >
               {word.join("")}
             </motion.span>
           </span>

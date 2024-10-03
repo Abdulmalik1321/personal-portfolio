@@ -6,37 +6,38 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { useRef } from "react";
-import { scroll } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import AnimatedCharactersServices from "@/aimations/text-animation-services";
+import { ServiceCard } from "./ServiceCard";
 
 export function ServicesAboutUs() {
+  const [experienceData, setExperienceData] = useState(null); // State to store fetched data
   const targetRef = useRef(null);
   const services = useRef(null);
+  const services2 = useRef(null);
   const isInView = useInView(services);
+  const isInView2 = useInView(services2);
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
 
-  scroll((progress) => console.log(scrollYProgress.current));
-
   const x = useTransform(
     useSpring(scrollYProgress, { stiffness: 1000, damping: 100 }),
-    [0.1, 1],
-    ["1%", "91.5%"]
+    [0, 1],
+    ["-0.25%", "-91.5%"]
   );
 
   const placeholderText = [
     {
       type: "span",
-      text: "ونقدم جميع الخدمات التقنية التي قد يحتاجها نشاط عملك 👈",
+      text: "A blend of technical skills and accounting experience, Here are key highlights of my work. 👉",
     },
   ];
 
   const placeholderText2 = [
     {
       type: "span",
-      text: "نحن شركة ناشئة في مجال تقنية المعلومات نسعى لتقديم الحلول والتقنيات المبتكرة لتمكينك من تحقيق اهدافك وطموحاتك",
+      text: "I aim to leverage my skills in full-stack development💻 and my accounting knowledge📊 to drive innovation💡 and efficiency⚡, while continuously learning📚",
     },
   ];
 
@@ -49,11 +50,21 @@ export function ServicesAboutUs() {
     },
   };
 
+  // Fetch the data when the component mounts
+  useEffect(() => {
+    fetch("../src/assets/Experience.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setExperienceData(data); // Store the fetched data
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
   return (
     <section id="about-us" ref={targetRef} className="relative h-[500vh] ">
       <div className="sticky top-0 h-screen w-full flex flex-col items-start justify-start p-6 pt-24 md:p-12 md:pt-32  overflow-hidden">
         <motion.p
-          key={isInView ? "inView" : "notInView"} // This line is added
+          key={isInView ? "inView" : "notInView"}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{
@@ -63,7 +74,7 @@ export function ServicesAboutUs() {
           }}
           className="text-3xl md:text-5xl font-bold text-center w-full mb-10"
         >
-          {isInView ? "خدماتنا✨" : "نبذة عنا 🙋🏻"}
+          {isInView2 ? "Objective 🎯" : isInView ? "Experiences ✨" : "\xa0"}
         </motion.p>
         <motion.div style={{ x }} className="flex items-center h-[75%]">
           <div className="w-[105vw] flex justify-center">
@@ -75,29 +86,31 @@ export function ServicesAboutUs() {
                 delay: 0.25,
                 ease: easeInOut,
               }}
-              className="relative w-[75%] md:w-[30%]"
+              className="relative w-[30%] md:w-[12%]"
             >
-              <img
-                src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1719007330/man-pointing_kilgot.png"
-                alt="man-pointing"
-                className="w-full"
-              />
-              <div className="absolute top-[15%] md:top-[25%] -left-10 md:left-0 inline-block">
+              <div className="floating2">
+                <img
+                  src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1727703179/Layer_4_copy_zl9iw2.png"
+                  alt="man-pointing"
+                  className="w-full rotate-180"
+                />
+              </div>
+              <div className="absolute top-[5%] md:top-[15%] -right-10 md:right-0 inline-block">
                 <div className="floating2">
                   <img
                     src="https://wowtheme7.com/tf/agiletech/assets/img/about/2.png"
                     alt="arrow"
-                    className="object-contain rotate-180 w-[50%] md:w-[100%]"
+                    className="object-contain w-[50%] md:w-[100%]"
                   />
                 </div>
               </div>
 
-              <div className="absolute top-[85%] md:top-[85%] right-[25%]  inline-block">
+              <div className="absolute top-[85%] md:top-[85%] -right-[10%] md:right-[25%]  inline-block">
                 <div className="floating2">
                   <img
                     src="https://wowtheme7.com/tf/agiletech/assets/img/about/3.png"
                     alt="arrow"
-                    className="object-contain !delay-[1500] w-[50%] md:w-[100%]"
+                    className="object-contain !delay-[1500] rotate-180 w-[50%] md:w-[100%]"
                   />
                 </div>
               </div>
@@ -108,9 +121,10 @@ export function ServicesAboutUs() {
             initial="hidden"
             animate={"visible"}
             variants={container}
-            className="w-[110vw] md:w-screen"
+            ref={services2}
+            className="mr-[40vw]"
           >
-            <p className="text-3xl md:text-5xl md:leading-normal text-center w-[90vw] md:w-[50vw]">
+            <p className="text-2xl md:text-5xl md:leading-normal text-center w-[90vw] md:w-[50vw]">
               {placeholderText2.map((item, index) => {
                 return <AnimatedCharactersServices {...item} key={index} />;
               })}
@@ -127,216 +141,40 @@ export function ServicesAboutUs() {
               variants={container}
               className="md:w-screen"
             >
-              <p className="whitespace-nowrap text-3xl md:text-5xl md:leading-normal ">
+              <p className="whitespace-nowrap text-2xl md:text-5xl md:leading-normal ">
                 {placeholderText.map((item, index) => {
                   return <AnimatedCharactersServices {...item} key={index} />;
                 })}
               </p>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 1.25 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.25,
-                delay: 0.25,
-                ease: easeInOut,
-              }}
-              className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
-            >
-              <img
-                src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
-                alt="circuit-board-pattern"
-                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[2%]"
-              />
-              <div className="w-full flex justify-center mb-5">
-                <img
-                  src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825922/meeting-presentation-training-svgrepo-com_zscnv7.svg"
-                  alt="meeting icon"
-                  className="size-24 md:size-44 invert"
-                />
-              </div>
-              <h1 className="font-bold text-xl md:text-4xl text-white mb-4">
-                استشارات تقنية المعلومات
-              </h1>
 
-              <p className="font-normal text-base md:text-3xl text-slate-400 mb-4 ">
-                توفر خدماتنا الاستشارية المجانية في مجال تقنية المعلومات،
-                الارشاد الإستراتيجي المصمم خصيصًا لتلبية احتياجاتك الفريدة.
-                بدءًا من تحسين البنية التحتية لتقنية المعلومات الخاصة بك وحتى
-                تعزيز الأمان، نحن نسعى لتقديم احدث التقنيات لمساعدتك في تحقيق
-                اهدافك.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 1.25 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.25,
-                delay: 0.25,
-                ease: easeInOut,
-              }}
-              className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
-            >
-              <img
-                src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
-                alt="circuit-board-pattern"
-                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[2%]"
-              />
-              <div className="w-full flex justify-center mb-5">
-                <img
-                  src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718826705/development_iiwc7t.png"
-                  alt="meeting icon"
-                  className="size-24 md:size-44 invert"
-                />
-              </div>
-              <h1 className="font-bold text-xl md:text-4xl text-white mb-4">
-                تطوير المواقع الإلكترونية
-              </h1>
-
-              <p className="font-normal text-base md:text-3xl text-slate-400 mb-4 ">
-                ستساعدك خدمات تطوير المواقع الإلكترونية لدينا في إنشاء تواجد
-                مؤثر عبر الإنترنت والوصول إلى جمهورك المستهدف بفعالية. سواء كنت
-                تبحث عن تصميم موقع ويب مبتكر أو تطوير تطبيق متميز، نحن نجمع بين
-                الإبداع والتقنية لنضمن أن تكون تجربة مستخدميك مميزة وملهمة.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 1.25 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.25,
-                delay: 0.25,
-                ease: easeInOut,
-              }}
-              className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
-            >
-              <img
-                src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
-                alt="circuit-board-pattern"
-                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[2%]"
-              />
-              <div className="w-full flex justify-center mb-5">
-                <img
-                  src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718884394/coding_acvva8.png"
-                  alt="meeting icon"
-                  className="size-24 md:size-44 invert"
-                />
-              </div>
-              <h1 className="font-bold text-xl md:text-4xl text-white mb-4">
-                تطوير البرمجيات المخصصة
-              </h1>
-
-              <p className="font-normal text-base md:text-3xl text-slate-400 mb-4 ">
-                ان خدمة تطوير البرمجيات المخصصة. تقدم حلول برمجية تتوافق مع
-                احتياجات عملك الفريدة. سواء كنت تحتاج إلى إدارة للمخزون، أو
-                إدارة لعلاقات العملاء، أو إعداد تقارير مالية تلقائية، فلدينا كل
-                ما تحتاجه. تم تصميم حلولنا بدقة لتعزيز الإنتاجية ودفع النمو.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 1.25 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.25,
-                delay: 0.25,
-                ease: easeInOut,
-              }}
-              className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
-            >
-              <img
-                src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
-                alt="circuit-board-pattern"
-                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[2%]"
-              />
-              <div className="w-full flex justify-center mb-5">
-                <img
-                  src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718894262/automation_y7cffp.png"
-                  alt="meeting icon"
-                  className="size-24 md:size-44 invert"
-                />
-              </div>
-              <h1 className="font-bold text-xl md:text-4xl text-white mb-4">
-                الذكاء الاصطناعي والاتمتة
-              </h1>
-
-              <p className="font-normal text-base md:text-3xl text-slate-400 mb-4 ">
-                استخدم البرمجيات الاوتوماتيكية والأدخال الآلي للبيانات واسمح
-                للأنظمة الذكية بمعالجة المهام المتكررة وتعزيز الدقة والإنتاجية،
-                بينما يركز فريقك على الأمور المهمة.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 1.25 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.25,
-                delay: 0.25,
-                ease: easeInOut,
-              }}
-              className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
-            >
-              <img
-                src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
-                alt="circuit-board-pattern"
-                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[2%]"
-              />
-              <div className="w-full flex justify-center mb-5">
-                <img
-                  src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718894621/resource_lau8xg.png"
-                  alt="meeting icon"
-                  className="size-24 md:size-44 invert"
-                />
-              </div>
-              <h1 className="font-bold text-xl md:text-4xl text-white mb-4">
-                حلول التخزين
-              </h1>
-
-              <p className="font-normal text-base md:text-3xl text-slate-400 mb-4 ">
-                تظمن حلول التخزين لدينا بأن تكون بياناتك آمنة، وسهلة الوصول
-                والإدارة. وتتيح لموظفينك تخزين البيانات المهمه على خادم شبكة
-                مركزي، لتوفير نقطة وصول مركزية آمنة لمجموعة كبيرة من البيانات
-                للمسخدمين داخل نطاق المنشأة مع توفرها على مدار الساعة.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 1.25 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.25,
-                delay: 0.25,
-                ease: easeInOut,
-              }}
-              className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
-            >
-              <img
-                src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
-                alt="circuit-board-pattern"
-                className="absolute top-0 left-0 invert size-[175%] object-cover opacity-[2%]"
-              />
-              <div className="w-full flex justify-center mb-5">
-                <img
-                  src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718911676/maintenance_jhmm22.png"
-                  alt="meeting icon"
-                  className="size-24 md:size-44 invert"
-                />
-              </div>
-              <h1 className="font-bold text-xl md:text-4xl text-white mb-4">
-                صيانة تقنية المعلومات
-              </h1>
-
-              <p className="font-normal text-base md:text-3xl text-slate-400 mb-4 ">
-                إن الصيانة الاستباقية لتقنية المعلومات أمر مهم لتحقيق نجاح
-                الأعمال. من خلال تنفيذ الفحوصات المنتظمة والتدابير الوقائية،
-                يمكنك تقليل وقت التوقف عن العمل وتعزيز الأداء وضمان استقرار
-                الانظمة. تعالج خدماتنا المشكلات المحتملة قبل أن تتفاقم، مما يضمن
-                بقاء البنية التحتية التقنية لديك موثوقاً بها وفعالة.
-              </p>
-            </motion.div>
+            {!experienceData
+              ? // Display 5 empty placeholder cards while loading
+                [...Array(5)].map((_, index) => (
+                  <ServiceCard
+                    key={index}
+                    title="Loading..."
+                    img="" // Optional: placeholder image or leave empty
+                    jobTitle=""
+                    description="Please wait, loading data..."
+                    items={[]}
+                    link="#"
+                  />
+                ))
+              : // Display actual data once loaded
+                experienceData.map((data: any, index: number) => {
+                  return (
+                    <ServiceCard
+                      key={index}
+                      title={data.title}
+                      img={data.img}
+                      jobTitle={data.jobTitle}
+                      description={data.description}
+                      items={data.items}
+                      link={data.link}
+                    />
+                  );
+                })}
           </div>
         </motion.div>
       </div>

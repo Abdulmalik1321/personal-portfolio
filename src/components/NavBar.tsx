@@ -19,7 +19,7 @@ export function NavBar() {
   }
   return (
     <nav className="fixed top-0 flex items-center justify-between w-full p-6 md:p-12 z-40 bg-gradient-to-b from-background to-transparent">
-      <Logo />
+      {/* <Logo />
       <div className="hidden items-center gap-5 text-xl md:flex">
         <Button
           className="text-xl"
@@ -50,28 +50,6 @@ export function NavBar() {
         >
           تواصل معنا
         </Button>
-        {/* <Link to={"/"}>
-          <Button
-            className="text-xl"
-            variant="link"
-            onClick={() => {
-              scrollToElement("ContactUs");
-            }}
-          >
-            المدونة
-          </Button>
-        </Link>
-        <Link to={"/"}>
-          <Button
-            className="text-xl"
-            variant="link"
-            onClick={() => {
-              scrollToElement("ContactUs");
-            }}
-          >
-            الوظائف
-          </Button>
-        </Link> */}
       </div>
 
       <div className="flex items-center gap-2 md:hidden">
@@ -102,7 +80,7 @@ export function NavBar() {
       </div>
       <div className="hidden md:flex opacity-0">
         <Logo />
-      </div>
+      </div> */}
     </nav>
   );
 }
