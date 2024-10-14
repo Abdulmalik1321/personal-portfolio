@@ -124,7 +124,7 @@ export function ServicesAboutUs() {
             ref={services2}
             className="mr-[40vw]"
           >
-            <p className="text-2xl md:text-5xl md:leading-normal text-center w-[90vw] md:w-[50vw]">
+            <p className="text-2xl md:text-4xl 3xl:text-5xl 3xl:leading-normal text-center w-[90vw] md:w-[50vw]">
               {placeholderText2.map((item, index) => {
                 return <AnimatedCharactersServices {...item} key={index} />;
               })}
@@ -141,7 +141,7 @@ export function ServicesAboutUs() {
               variants={container}
               className="md:w-screen"
             >
-              <p className="whitespace-nowrap text-2xl md:text-5xl md:leading-normal ">
+              <p className="whitespace-nowrap text-2xl md:text-4xl 3xl:text-5xl 3xl:leading-normal">
                 {placeholderText.map((item, index) => {
                   return <AnimatedCharactersServices {...item} key={index} />;
                 })}

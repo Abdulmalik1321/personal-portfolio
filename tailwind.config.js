@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -112,9 +112,13 @@ module.exports = {
           to: { height: "0" },
         },
       },
-     
-   
+      screens: {
+        "3xl": "1600px",
+      },
     },
   },
-  plugins: [require("tailwindcss-animate"), require('@pyncz/tailwind-mask-image')],
-}
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@pyncz/tailwind-mask-image"),
+  ],
+};

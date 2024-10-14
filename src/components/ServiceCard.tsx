@@ -36,7 +36,7 @@ export function ServiceCard({
       <div className="w-full flex justify-center mb-1 md:mb-3">
         <img src={img} className="w-24 md:w-40 object-cover " />
       </div>
-      <h1 className="font-bold text-xl md:text-4xl text-white mb-0 text-center w-full">
+      <h1 className="font-bold text-xl md:text-2xl 3xl:text-4xl text-white mb-0 text-center w-full">
         {link ? (
           <a href={link} target="_blank" className="underline z-50">
             {title}
@@ -46,15 +46,15 @@ export function ServiceCard({
         )}
       </h1>
 
-      <span className="font-normal text-xs md:text-xl text-slate-400 text-center w-full">
+      <span className="font-normal text-xs md:text-lg 3xl:text-xl text-slate-400 text-center w-full">
         {jobTitle}
       </span>
 
-      <p className="font-normal text-sm md:text-xl md:leading-10  mt-4 ">
+      <p className="font-normal text-sm md:text-lg 3xl:text-xl 3xl:leading-10  mt-4 ">
         {description}
       </p>
 
-      <ul className="text-sm md:text-xl md:leading-10 list-disc list-inside">
+      <ul className="text-sm md:text-base 3xl:text-xl 3xl:leading-10 list-disc list-inside">
         {items.map((item) => {
           return <li>{item}</li>;
         })}
