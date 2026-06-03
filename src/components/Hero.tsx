@@ -1,20 +1,55 @@
+"use client";
+
 import AnimatedCharacters from "@/aimations/text-animation";
 import { BackgroundGradientAnimation } from "@/shadcn/ui/background-gradient-animation";
-import { Badge } from "@/shadcn/ui/badge";
 import { Button } from "@/shadcn/ui/button";
 import { easeInOut, motion } from "framer-motion";
-import { FileUserIcon, MessageCircle } from "lucide-react";
+import {
+  BarChart3,
+  Braces,
+  Calculator,
+  Code2,
+  Database,
+  FileUserIcon,
+  MessageCircle,
+} from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageProvider";
+
+const chartBars = ["35%", "55%", "45%", "70%", "60%", "85%", "100%"];
+
+const floatingChips = [
+  {
+    icon: Code2,
+    label: "React.js",
+    className: "-top-4 -left-4 md:-left-10",
+    delay: 4.6,
+  },
+  {
+    icon: Database,
+    label: "SAP S/4HANA",
+    className: "top-1/3 -right-6 md:-right-12",
+    delay: 4.8,
+  },
+  {
+    icon: Braces,
+    label: "Python",
+    className: "-bottom-5 left-2 md:-left-8",
+    delay: 5,
+  },
+  {
+    icon: Calculator,
+    label: "Accounting",
+    className: "-bottom-4 -right-3 md:-right-10",
+    delay: 5.2,
+  },
+];
 
 export function Hero() {
-  const placeholderText = [
-    {
-      type: "span1",
-      text: "Abdulmalik Almasud",
-    },
-    {
-      type: "span2",
-      text: "Accountant, Full-Stack Developer, SAP Application Consultant",
-    },
+  const { t, lang } = useLanguage();
+
+  const placeholderText: { type: "span1" | "span2"; text: string }[] = [
+    { type: "span1", text: t.hero.name },
+    { type: "span2", text: t.hero.title },
   ];
 
   const container = {
@@ -26,23 +61,27 @@ export function Hero() {
     },
   };
 
+  function scrollToContact() {
+    document.getElementById("ContactUs")?.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <section
       id="hero"
-      className="h-screen w-full flex flex-col md:flex-row md:items-center p-6 pt-12 md:mt-0 md:p-12 relative"
+      className="min-h-screen w-full flex flex-col md:flex-row md:items-center gap-10 md:gap-0 px-6 pt-28 pb-12 md:p-12 relative overflow-hidden"
     >
       <BackgroundGradientAnimation />
 
-      <div className="w-full md:w-1/2">
+      <div className="relative z-10 w-full md:w-1/2">
         <motion.div
           className="w-full"
           initial="hidden"
           animate={"visible"}
           variants={container}
         >
-          <h1 className="text-[1.5rem] leading-3 md:!leading-tight md:text-4xl">
+          <h1 className="leading-tight md:!leading-tight">
             {placeholderText.map((item, index) => {
-              return <AnimatedCharacters {...item} key={index} />;
+              return <AnimatedCharacters {...item} key={`${lang}-${index}`} />;
             })}
           </h1>
           <motion.p
@@ -53,223 +92,116 @@ export function Hero() {
               delay: 3.5,
               ease: easeInOut,
             }}
-            className="text-secondary-foreground text-sm md:text-lg md:w-[90%]"
+            className="text-secondary-foreground text-sm md:text-lg md:w-[90%] mt-5"
           >
-            <br />I am a highly motivated professional with a Bachelor's degree
-            in Accounting 🎓 and a strong background in software development.
-            With hands-on experience in full-stack development, SAP consulting,
-            and financial automation, I’m passionate about streamlining
-            processes 🔄 and delivering impactful results 🚀.
+            {t.hero.intro}
           </motion.p>
         </motion.div>
-        <div className="flex gap-2 mt-5">
-          <motion.div
-            initial={{ opacity: 0, translateY: 20 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 3.75,
-              ease: easeInOut,
-            }}
-          >
-            <a href="./Abdulmalik_Almasud_CV.pdf" download>
-              <Button>
-                <FileUserIcon />
-                Download CV
-              </Button>
-            </a>
 
-            <Button
-              onClick={() => {
-                const targetElement = document.getElementById(
-                  "ContactUs"
-                ) as HTMLDivElement;
-                targetElement.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="text-xs md:text-base px-2.5 py-2 h-auto font-normal gap-1 ml-2"
-            >
-              <MessageCircle />
-              Contact Me
-            </Button>
-          </motion.div>
-        </div>
-      </div>
-
-      <div className="flex items-end pb-12 justify-center w-full md:w-[50%] h-[50%] md:h-[80%] mt-10 md:mt-0 relative -top-[10%] md:top-0">
         <motion.div
-          className="relative flex justify-center items-end rounded-xl md:rounded-3xl w-[60%] h-[85%] bg-no-repeat bg-center bg-cover  ml-[12%]"
-          initial={{ opacity: 0, translateX: -20, translateY: 30, rotate: -5 }}
-          animate={{ opacity: 1, translateX: 0, translateY: 0, rotate: 0 }}
+          className="flex flex-wrap gap-3 mt-6"
+          initial={{ opacity: 0, translateY: 20 }}
+          animate={{ opacity: 1, translateY: 0 }}
           transition={{
             duration: 0.5,
-            delay: 4.25,
+            delay: 3.75,
             ease: easeInOut,
           }}
         >
-          <motion.img
-            initial={{ opacity: 0, translateY: 20 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 5,
-              ease: easeInOut,
-            }}
-            className="w-[100%] ml-5 md:ml-8 z-10 absolute -top-[9%] md:-top-[12%]"
-            src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1727618226/hero2_zc17sg.png"
-            alt="saudi man"
-          />
+          <a href="/Abdulmalik_Almasud_CV.pdf" download>
+            <Button className="gap-2">
+              <FileUserIcon className="h-4 w-4" />
+              {t.hero.downloadCV}
+            </Button>
+          </a>
 
-          <motion.div
-            className="bg-muted absolute top-[0%] md:top-[20%] -left-[20%] md:-left-[15%] rounded-xl px-2 py-4 md:px-6 md:py-10 floating"
-            initial={{ opacity: 0, translateY: 20 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 4.75,
-              ease: easeInOut,
-            }}
+          <Button
+            variant="secondary"
+            className="gap-2"
+            onClick={scrollToContact}
           >
-            <img
-              className="size-8 lg:size-14 invert"
-              src="https://cdn.icon-icons.com/icons2/2389/PNG/512/laravel_horizon_logo_icon_145119.png"
-              alt="logo"
-            />
-          </motion.div>
-          <motion.div
-            className="absolute top-[60%] -left-[15%] flex justify-center items-end bg-gradient-to-br to-cyan-500 from-blue-500 rounded-xl md:rounded-3xl w-[100%] h-[45%] bg-no-repeat bg-center bg-cover p-2 md:p-5 z-20"
-            initial={{
-              opacity: 0,
-              translateX: -20,
-              translateY: 30,
-              rotate: -5,
-            }}
-            animate={{
-              opacity: 1,
-              translateX: 0,
-              translateY: 0,
-              rotate: 0,
-            }}
-            transition={{
-              duration: 0.5,
-              delay: 4.25,
-              ease: easeInOut,
-            }}
-          >
-            <div className="w-full h-full flex items-center">
-              <div
-                dir="ltr"
-                className="w-full h-[80%] md:h-[90%] flex items-center"
-              >
-                <div className="h-full flex flex-col justify-between text-[9px] md:text-base">
-                  <div>100%</div>
-                  <div>80%</div>
-                  <div>60%</div>
-                  <div>40%</div>
-                  <div>20%</div>
-                </div>
-                <div className="flex justify-center h-full w-[85%] mt-3 md:mt-4 items-end gap-2 md:gap-5 border-b-2 border-l-2 border-white">
-                  <motion.div
-                    initial={{
-                      height: 0,
-                    }}
-                    animate={{
-                      height: "15%",
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 4.75,
-                      ease: easeInOut,
-                    }}
-                    className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
-                  ></motion.div>
-                  <motion.div
-                    initial={{
-                      height: 0,
-                    }}
-                    animate={{
-                      height: "20%",
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 4.75,
-                      ease: easeInOut,
-                    }}
-                    className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
-                  ></motion.div>
-                  <motion.div
-                    initial={{
-                      height: 0,
-                    }}
-                    animate={{
-                      height: "30%",
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 4.75,
-                      ease: easeInOut,
-                    }}
-                    className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
-                  ></motion.div>
-                  <motion.div
-                    initial={{
-                      height: 0,
-                    }}
-                    animate={{
-                      height: "40%",
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 4.75,
-                      ease: easeInOut,
-                    }}
-                    className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
-                  ></motion.div>
-                  <motion.div
-                    initial={{
-                      height: 0,
-                    }}
-                    animate={{
-                      height: "60%",
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 4.75,
-                      ease: easeInOut,
-                    }}
-                    className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
-                  ></motion.div>
-                  <motion.div
-                    initial={{
-                      height: 0,
-                    }}
-                    animate={{
-                      height: "75%",
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 4.75,
-                      ease: easeInOut,
-                    }}
-                    className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
-                  ></motion.div>
-                  <motion.div
-                    initial={{
-                      height: 0,
-                    }}
-                    animate={{
-                      height: "100%",
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 4.75,
-                      ease: easeInOut,
-                    }}
-                    className="bg-white w-[8%] rounded-t-sm md:rounded-t-md"
-                  ></motion.div>
-                </div>
+            <MessageCircle className="h-4 w-4" />
+            {t.hero.contactMe}
+          </Button>
+        </motion.div>
+      </div>
+
+      <div
+        dir="ltr"
+        className="relative z-10 flex items-center justify-center w-full md:w-1/2 mt-4 md:mt-0"
+      >
+        <motion.div
+          className="relative w-[78%] max-w-[400px]"
+          initial={{ opacity: 0, translateY: 40, rotate: -3 }}
+          animate={{ opacity: 1, translateY: 0, rotate: 0 }}
+          transition={{ duration: 0.6, delay: 4.25, ease: easeInOut }}
+        >
+          <div className="floating rounded-2xl border border-gray-800 bg-background-op backdrop-blur-xl p-5 shadow-2xl">
+            <div className="flex items-center gap-1.5 mb-4">
+              <span className="size-3 rounded-full bg-red-400/80" />
+              <span className="size-3 rounded-full bg-yellow-400/80" />
+              <span className="size-3 rounded-full bg-green-400/80" />
+              <span className="ml-2 text-xs text-slate-400">portfolio.tsx</span>
+            </div>
+
+            <div className="flex flex-col gap-2 mb-5">
+              <div className="flex gap-2 items-center">
+                <span className="h-2.5 w-10 rounded bg-purple-400/70" />
+                <span className="h-2.5 w-20 rounded bg-blue-400/60" />
+                <span className="h-2.5 w-8 rounded bg-slate-500/50" />
+              </div>
+              <div className="flex gap-2 items-center pl-4">
+                <span className="h-2.5 w-14 rounded bg-cyan-400/70" />
+                <span className="h-2.5 w-24 rounded bg-slate-500/40" />
+              </div>
+              <div className="flex gap-2 items-center pl-4">
+                <span className="h-2.5 w-16 rounded bg-emerald-400/60" />
+                <span className="h-2.5 w-12 rounded bg-slate-500/40" />
               </div>
             </div>
-          </motion.div>
+
+            <div className="rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 p-4">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-semibold text-white/90">
+                  Performance
+                </span>
+                <BarChart3 className="h-4 w-4 text-white/80" />
+              </div>
+              <div className="flex items-end justify-between gap-1.5 h-20">
+                {chartBars.map((height, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ height: 0 }}
+                    animate={{ height }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 4.75 + index * 0.08,
+                      ease: easeInOut,
+                    }}
+                    className="w-full rounded-t-md bg-white/90"
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {floatingChips.map((chip) => {
+            const Icon = chip.icon;
+            return (
+              <motion.div
+                key={chip.label}
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: chip.delay, ease: easeInOut }}
+                className={`absolute ${chip.className} floating flex items-center gap-2 rounded-xl border border-gray-700 bg-[#191825]/90 backdrop-blur px-3 py-2 shadow-lg`}
+              >
+                <Icon className="h-4 w-4 text-cyan-400" />
+                <span className="text-xs font-medium text-white whitespace-nowrap">
+                  {chip.label}
+                </span>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

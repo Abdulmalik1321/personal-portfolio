@@ -1,44 +1,16 @@
-import { FC, ReactNode } from "react";
-import { motion, Variants } from "framer-motion";
+"use client";
 
-interface WrapperProps {
-  children: ReactNode;
-}
+import { FC } from "react";
+import { motion } from "framer-motion";
 
-const Wrapper: FC<WrapperProps> = (props) => {
-  return <span className="word-wrapper">{props.children}</span>;
-};
-
-type TagMap = {
-  paragraph: string;
-  heading1: string;
-  heading2: string;
-  span: string;
-};
+type Tag = "paragraph" | "heading1" | "heading2" | "span";
 
 interface AnimatedCharactersProps {
   text: string;
-  type: TagMap;
+  type: Tag;
 }
 
 const AnimatedCharactersServices: FC<AnimatedCharactersProps> = (props) => {
-  const item: Variants = {
-    hidden: {
-      y: "200%",
-      transition: {
-        ease: [0.455, 0.03, 0.515, 0.955],
-        duration: 0.85,
-      },
-    },
-    visible: {
-      y: 0,
-      transition: {
-        ease: [0.455, 0.03, 0.515, 0.955],
-        duration: 0.75,
-      },
-    },
-  };
-
   const splitWords = props.text.split(" ");
 
   const words: string[][] = [];

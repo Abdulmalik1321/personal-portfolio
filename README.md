@@ -1,40 +1,43 @@
-# Modern Tech Business Website
+# Abdulmalik Almasud - Personal Portfolio
 
-Welcome to the repository of a cutting-edge tech business website designed to showcase modern design aesthetics and clean animations. This project serves as a testament to my frontend development skills.
+A personal portfolio website for Abdulmalik Almasud (Accountant, Full-Stack Developer, and SAP Consultant), featuring a dark, animated design that highlights work experience, education, skills, and certifications.
 
 ## Technologies Used
 
-- **Vite**: A blazing fast frontend build tool.
-- **React.js**: For building the user interface with component-based architecture.
-- **Framer Motion**: Implemented for smooth and clean animations.
-- **Tailwind CSS**: Utilized for rapid UI development with a utility-first approach.
+- **Next.js (App Router)**: React framework with server-side rendering and static optimization.
+- **React** and **TypeScript**: Component-based UI with type safety.
+- **Framer Motion**: Smooth, performant animations.
+- **Tailwind CSS** + **shadcn/ui**: Utility-first styling and accessible UI primitives.
 
 ## Features
 
-- Responsive modern design that adapts to various screen sizes.
-- Elegant animations that enhance user experience without compromising performance.
-- Efficient code structure ensuring quick load times and SEO friendliness.
+- Responsive design that adapts to mobile, tablet, and desktop.
+- Animated hero, horizontally-scrolling experience timeline, and education/skills sections.
+- Direct contact links (WhatsApp, email, LinkedIn, GitHub) and downloadable CV.
 
 ## Local Development
 
-To run this project locally:
+1. Clone the repository.
 
-1. Clone the repository:
+2. Install dependencies:
 
-https://github.com/Abdulmalik1321/tech_landing_page.git
-
-3. Install dependencies:
-
+```bash
 npm install
+```
 
 3. Start the development server:
 
+```bash
 npm run dev
+```
 
-## Showcase
+4. Build for production:
 
-- Home Page: Demonstrates responsive design with animated components.
-- About Us: Clean animations are used to bring life to the company's story.
-- Services: Interactive UI elements display the range of services offered.
+```bash
+npm run build && npm run start
+```
 
-Feel free to explore the commits, branches, and pull requests to see how I build and refine the codebase.
+## Assets
+
+- `public/Abdulmalik_Almasud_CV.pdf` - the downloadable CV linked from the hero.
+- `public/logos/mmra.png` - logo for the Ministry of Municipal and Rural Affairs experience card.

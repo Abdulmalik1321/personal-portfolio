@@ -1,59 +1,48 @@
-import { FC, ReactNode } from "react";
+"use client";
+
+import { FC } from "react";
 import { motion, Variants } from "framer-motion";
 
-interface WrapperProps {
-  children: ReactNode;
-}
-
-const Wrapper: FC<WrapperProps> = (props) => {
-  return <span className="word-wrapper">{props.children}</span>;
-};
-
-type TagMap = {
-  paragraph: string;
-  heading1: string;
-  heading2: string;
-  span1: string;
-  span2: string;
-};
+type Tag = "paragraph" | "heading1" | "heading2" | "span1" | "span2";
 
 interface AnimatedCharactersProps {
   text: string;
-  type: TagMap;
+  type: Tag;
 }
 
+const container: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.5,
+    },
+  },
+};
+
+const item: Variants = {
+  hidden: {
+    y: "120%",
+  },
+  visible: {
+    y: 0,
+    transition: {
+      ease: [0.455, 0.03, 0.515, 0.955],
+      duration: 0.75,
+    },
+  },
+};
+
 const AnimatedCharacters: FC<AnimatedCharactersProps> = (props) => {
-  const item: Variants = {
-    hidden: {
-      y: "200%",
-      transition: {
-        ease: [0.455, 0.03, 0.515, 0.955],
-        duration: 0.85,
-      },
-    },
-    visible: {
-      y: 0,
-      transition: {
-        ease: [0.455, 0.03, 0.515, 0.955],
-        duration: 0.75,
-      },
-    },
-  };
-
-  const splitWords = props.text.split(" ");
-
-  const words: string[][] = [];
-
-  for (const [, item] of splitWords.entries()) {
-    words.push(item.split(""));
-  }
-
-  words.map((word) => {
-    return word.push("\u00A0");
-  });
+  const words = props.text.split(" ");
 
   return (
-    <span className="block">
+    <motion.span
+      className="block"
+      variants={container}
+      initial="hidden"
+      animate="visible"
+    >
       {words.map((word, index) => {
         return (
           <span
@@ -72,12 +61,12 @@ const AnimatedCharacters: FC<AnimatedCharactersProps> = (props) => {
               }`}
               variants={item}
             >
-              {word.join("")}
+              {`${word}\u00A0`}
             </motion.span>
           </span>
         );
       })}
-    </span>
+    </motion.span>
   );
 };
 

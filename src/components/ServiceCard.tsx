@@ -1,24 +1,29 @@
-import { Button } from "@/shadcn/ui/button";
+"use client";
+
 import { easeInOut, motion } from "framer-motion";
-import { a, i } from "framer-motion/client";
 
 export function ServiceCard({
   title,
   img,
   jobTitle,
+  date,
   description,
   items,
   link,
+  dir = "ltr",
 }: {
   title: string;
   img: string;
   jobTitle: string;
+  date?: string;
   description: string;
   items: string[];
   link: string;
+  dir?: "ltr" | "rtl";
 }) {
   return (
     <motion.div
+      dir={dir}
       initial={{ opacity: 0, scale: 1.25 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{
@@ -26,39 +31,61 @@ export function ServiceCard({
         delay: 0.25,
         ease: easeInOut,
       }}
-      className="w-[75vw] md:w-[40vw] h-[55vh] relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800  px-4 md:px-8 py-8 overflow-hidden rounded-2xl flex flex-col justify-start items-start"
+      className="shrink-0 w-[80vw] sm:w-[60vw] md:w-[42vw] max-w-[560px] max-h-[80vh] overflow-y-auto no-scrollbar relative shadow-xl bg-background-op backdrop-blur-3xl border border-gray-800 px-4 md:px-8 py-6 md:py-7 rounded-2xl flex flex-col justify-start items-start h-[50dvh]"
     >
-      <img
-        src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
-        alt="circuit-board-pattern"
-        className="absolute top-0 left-0 invert size-[175%] -z-10 object-cover opacity-[2%]"
-      />
-      <div className="w-full flex justify-center mb-1 md:mb-3">
-        <img src={img} className="w-24 md:w-40 object-cover " />
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+        <img
+          src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1718825539/topography_j800ig.svg"
+          alt=""
+          aria-hidden="true"
+          className="absolute top-0 left-0 invert size-[175%] -z-10 object-cover opacity-[2%] pointer-events-none"
+        />
       </div>
-      <h1 className="font-bold text-xl md:text-2xl 3xl:text-4xl text-white mb-0 text-center w-full">
+      <div className="w-full flex justify-center mb-2 md:mb-3">
+        <img
+          src={img}
+          alt={`${title} logo`}
+          className="w-20 md:w-32 h-20 md:h-32 object-contain"
+        />
+      </div>
+      <h3 className="font-bold text-xl md:text-2xl 3xl:text-4xl text-white mb-0 text-center w-full">
         {link ? (
-          <a href={link} target="_blank" className="underline z-50">
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
             {title}
           </a>
         ) : (
           title
         )}
-      </h1>
+      </h3>
 
       <span className="font-normal text-xs md:text-lg 3xl:text-xl text-slate-400 text-center w-full">
         {jobTitle}
       </span>
 
-      <p className="font-normal text-sm md:text-lg 3xl:text-xl 3xl:leading-10  mt-4 ">
-        {description}
-      </p>
+      {date ? (
+        <span className="font-medium text-xs md:text-sm text-slate-500 text-center w-full mt-1">
+          {date}
+        </span>
+      ) : null}
 
-      <ul className="text-sm md:text-base 3xl:text-xl 3xl:leading-10 list-disc list-inside">
-        {items.map((item) => {
-          return <li>{item}</li>;
-        })}
-      </ul>
+      {description ? (
+        <p className="font-normal text-sm md:text-lg 3xl:text-xl 3xl:leading-10 mt-4">
+          {description}
+        </p>
+      ) : null}
+
+      {items.length > 0 ? (
+        <ul className="text-sm md:text-base 3xl:text-xl 3xl:leading-10 list-disc list-inside mt-4 space-y-1">
+          {items.map((item, index) => {
+            return <li key={index}>{item}</li>;
+          })}
+        </ul>
+      ) : null}
     </motion.div>
   );
 }
