@@ -22,25 +22,25 @@ const floatingChips = [
     icon: Code2,
     label: "React.js",
     className: "-top-4 -left-4 md:-left-10",
-    delay: 4.6,
+    delay: 1.3,
   },
   {
     icon: Database,
     label: "SAP S/4HANA",
     className: "top-1/3 -right-6 md:-right-12",
-    delay: 4.8,
+    delay: 1.45,
   },
   {
     icon: Braces,
     label: "Python",
     className: "-bottom-5 left-2 md:-left-8",
-    delay: 5,
+    delay: 1.6,
   },
   {
     icon: Calculator,
     label: "Accounting",
     className: "-bottom-4 -right-3 md:-right-10",
-    delay: 5.2,
+    delay: 1.75,
   },
 ];
 
@@ -62,7 +62,9 @@ export function Hero() {
   };
 
   function scrollToContact() {
-    document.getElementById("ContactUs")?.scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById("ContactUs")
+      ?.scrollIntoView({ behavior: "smooth" });
   }
 
   return (
@@ -89,7 +91,7 @@ export function Hero() {
             animate={{ opacity: 1, translateY: 0 }}
             transition={{
               duration: 0.5,
-              delay: 3.5,
+              delay: 1.2,
               ease: easeInOut,
             }}
             className="text-secondary-foreground text-sm md:text-lg md:w-[90%] mt-5"
@@ -104,7 +106,7 @@ export function Hero() {
           animate={{ opacity: 1, translateY: 0 }}
           transition={{
             duration: 0.5,
-            delay: 3.75,
+            delay: 1.5,
             ease: easeInOut,
           }}
         >
@@ -134,7 +136,7 @@ export function Hero() {
           className="relative w-[78%] max-w-[400px]"
           initial={{ opacity: 0, translateY: 40, rotate: -3 }}
           animate={{ opacity: 1, translateY: 0, rotate: 0 }}
-          transition={{ duration: 0.6, delay: 4.25, ease: easeInOut }}
+          transition={{ duration: 0.6, delay: 0.9, ease: easeInOut }}
         >
           <div className="floating rounded-2xl border border-gray-800 bg-background-op backdrop-blur-xl p-5 shadow-2xl">
             <div className="flex items-center gap-1.5 mb-4">
@@ -175,7 +177,7 @@ export function Hero() {
                     animate={{ height }}
                     transition={{
                       duration: 0.6,
-                      delay: 4.75 + index * 0.08,
+                      delay: 1.4 + index * 0.07,
                       ease: easeInOut,
                     }}
                     className="w-full rounded-t-md bg-white/90"
@@ -192,7 +194,11 @@ export function Hero() {
                 key={chip.label}
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: chip.delay, ease: easeInOut }}
+                transition={{
+                  duration: 0.4,
+                  delay: chip.delay,
+                  ease: easeInOut,
+                }}
                 className={`absolute ${chip.className} floating flex items-center gap-2 rounded-xl border border-gray-700 bg-[#191825]/90 backdrop-blur px-3 py-2 shadow-lg`}
               >
                 <Icon className="h-4 w-4 text-cyan-400" />
