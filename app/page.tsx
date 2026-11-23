@@ -1,17 +1,31 @@
-import { ContactUs } from "@/components/ContactUs";
+import { Contact } from "@/components/Contact";
+import { Cover } from "@/components/Cover";
 import { Credentials } from "@/components/Credentials";
-import { Hero } from "@/components/Hero";
-import { NavBar } from "@/components/NavBar";
-import { ServicesAboutUs } from "@/components/ServicesAboutUs";
+import { Experience } from "@/components/Experience";
+import { Expertise } from "@/components/Expertise";
+import { Footer } from "@/components/Footer";
+import { KeyFigures } from "@/components/KeyFigures";
+import { Masthead } from "@/components/Masthead";
+import { NotesProvider } from "@/components/notes/NotesProvider";
+import { Products } from "@/components/Products";
+import { LanguageProvider } from "@/i18n/LanguageProvider";
 
 export default function Home() {
   return (
-    <main className="relative flex-grow z-0">
-      <NavBar />
-      <Hero />
-      <ServicesAboutUs />
-      <Credentials />
-      <ContactUs />
-    </main>
+    <LanguageProvider>
+      <NotesProvider>
+        <Masthead />
+        <main id="main" tabIndex={-1}>
+          <Cover />
+          <KeyFigures />
+          <Expertise />
+          <Products />
+          <Experience />
+          <Credentials />
+          <Contact />
+        </main>
+        <Footer />
+      </NotesProvider>
+    </LanguageProvider>
   );
 }

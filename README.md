@@ -1,43 +1,35 @@
-# Abdulmalik Almasud - Personal Portfolio
+# Abdulmalik Almasud: Portfolio
 
-A personal portfolio website for Abdulmalik Almasud (Accountant, Full-Stack Developer, and SAP Consultant), featuring a dark, animated design that highlights work experience, education, skills, and certifications.
+Source for [abdulmalik.al-masud.com](https://abdulmalik.al-masud.com): a bilingual (English / Arabic) single-page portfolio for Finance & AI Transformation, SAP S/4HANA FI/CO, full-stack development and applied AI.
 
-## Technologies Used
+The design is a light "bilingual annual report": a career-by-segment chart, key figures with numbered source notes, product system diagrams with built / not-live-yet schedules, an experience ledger, credentials and contact. See `DESIGN.md` for the design system and `PRODUCT.md` for audience, positioning and content guardrails.
 
-- **Next.js (App Router)**: React framework with server-side rendering and static optimization.
-- **React** and **TypeScript**: Component-based UI with type safety.
-- **Framer Motion**: Smooth, performant animations.
-- **Tailwind CSS** + **shadcn/ui**: Utility-first styling and accessible UI primitives.
+## Stack
 
-## Features
+- Next.js 14 (App Router, static output), React 18, TypeScript
+- Tailwind CSS 3 with logical properties for RTL
+- Archivo and Readex Pro via `next/font`
+- CSS animations only (no animation library); `lucide-react` icons
 
-- Responsive design that adapts to mobile, tablet, and desktop.
-- Animated hero, horizontally-scrolling experience timeline, and education/skills sections.
-- Direct contact links (WhatsApp, email, LinkedIn, GitHub) and downloadable CV.
+## Editing content
 
-## Local Development
+All copy lives in `src/content/`:
 
-1. Clone the repository.
+- `en.ts` and `ar.ts`: every visible string, one file per language, typed by `types.ts`.
+- `structure.ts`: language-independent data such as section order, chart positions, note targets, product status and contact links.
 
-2. Install dependencies:
+Every claim should trace to the resume or to the product repositories. Follow the guardrails in `PRODUCT.md` before adding figures or product features.
+
+## Local development
 
 ```bash
 npm install
-```
-
-3. Start the development server:
-
-```bash
-npm run dev
-```
-
-4. Build for production:
-
-```bash
-npm run build && npm run start
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint
 ```
 
 ## Assets
 
-- `public/Abdulmalik_Almasud_CV.pdf` - the downloadable CV linked from the hero.
-- `public/logos/mmra.png` - logo for the Ministry of Municipal and Rural Affairs experience card.
+- `public/Abdulmalik_Almasud_CV.pdf`: the downloadable CV linked from the masthead, cover and contact section.
+- `app/opengraph-image.tsx`: the generated share image. `app/icon.svg`: the brand mark.
