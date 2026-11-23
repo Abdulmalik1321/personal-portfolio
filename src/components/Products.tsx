@@ -30,10 +30,13 @@ export function Products() {
   const products = t.products;
 
   return (
-    <section id="products" aria-labelledby="products-title" tabIndex={-1} className="py-16 lg:py-28">
-      <div className="shell">
-        <SectionHeader id="products-title" number="04" title={products.title} intro={products.intro} />
-
+    <section id="products" aria-labelledby="products-title" tabIndex={-1} className="pb-16 lg:pb-28">
+      <div className="flow-root bg-eng pt-16 text-white lg:pt-24">
+        <div className="shell">
+          <SectionHeader id="products-title" number="04" title={products.title} intro={products.intro} tone="inverse" />
+        </div>
+      </div>
+      <div className="shell pt-12 lg:pt-16">
         <div className="space-y-20 lg:space-y-28">
           {productOrder.map((id) => (
             <ProductNote key={id} id={id} />

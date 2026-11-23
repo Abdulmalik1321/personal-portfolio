@@ -13,6 +13,9 @@ const pct = (year: number) => `${((year - AXIS.start) / SPAN) * 100}%`;
 const endOf = (item: TimelineShape) => (item.end === "now" ? AS_OF : (item.end ?? item.start));
 const delay = (item: TimelineShape) => `${Math.round((item.start - AXIS.start) * 110)}ms`;
 
+/** Space after the axis end so labels of recent entries have room to run. */
+const RUNWAY = "me-14 xl:me-10";
+
 const fill: Record<LaneId, string> = {
   finance: "bg-finance",
   engineering: "bg-eng",
@@ -86,7 +89,7 @@ export function CareerChart() {
       <div className="mt-4 hidden lg:block">
         <div className="flex">
           <div className="w-[8.5rem] shrink-0 xl:w-44" />
-          <div className="relative h-6 flex-1 text-[0.75rem] font-semibold text-ink-3">
+          <div className={cn("relative h-6 flex-1 text-[0.75rem] font-semibold text-ink-3", RUNWAY)}>
             {years.slice(0, -1).map((year) => (
               <span key={year} className="tabular absolute top-0 ps-1.5" style={{ insetInlineStart: pct(year) }}>
                 {year}
@@ -102,7 +105,7 @@ export function CareerChart() {
         </div>
 
         <div className="relative">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 end-0 start-[8.5rem] xl:start-44">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 end-14 start-[8.5rem] xl:end-10 xl:start-44">
             {years.map((year) => (
               <span
                 key={year}
@@ -124,7 +127,7 @@ export function CareerChart() {
                 <h3 className={cn("w-[8.5rem] shrink-0 pe-4 pt-2.5 text-[0.85rem] font-bold xl:w-44", laneText[lane])}>
                   {chart.lanes[lane]}
                 </h3>
-                <ul className="relative flex-1" style={{ height: `${rows * 2.5 + 0.75}rem` }}>
+                <ul className={cn("relative flex-1", RUNWAY)} style={{ height: `${rows * 2.5 + 0.75}rem` }}>
                   {items.map((item) => {
                     const start = item.start;
                     const end = endOf(item);

@@ -129,7 +129,8 @@
   }
 
   .figure-lead {
-    font-size: clamp(4.25rem, 12.5vw, 11.5rem);
+    font-size: clamp(3.4rem, 11vw, 10.25rem);
+    white-space: nowrap;
     font-variation-settings: "wdth" 112;
     font-weight: 800;
     letter-spacing: -0.045em;

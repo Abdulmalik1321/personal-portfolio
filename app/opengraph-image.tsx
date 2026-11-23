@@ -1,14 +1,23 @@
 import { ImageResponse } from "next/og";
 
+import { AS_OF, AXIS, content, laneOrder, timeline, type LaneId } from "@/content";
+
 export const alt = "Abdulmalik Almasud: Finance & AI Transformation";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const segments = [
-  { label: "Finance & ERP", color: "#0B7A53", start: 0, width: 62 },
-  { label: "Engineering", color: "#2848D6", start: 38, width: 62 },
-  { label: "Applied AI", color: "#F2A71B", start: 64, width: 36 },
-];
+const colors: Record<LaneId, string> = { finance: "#0B7A53", engineering: "#2848D6", ai: "#F2A71B" };
+const span = AXIS.end - AXIS.start;
+
+const segments = laneOrder.map((lane) => {
+  const first = Math.min(...timeline.filter((item) => item.lane === lane).map((item) => item.start));
+  return {
+    label: content.en.chart.lanes[lane],
+    color: colors[lane],
+    start: ((first - AXIS.start) / span) * 100,
+    width: ((AS_OF - first) / span) * 100,
+  };
+});
 
 export default function OpengraphImage() {
   return new ImageResponse(

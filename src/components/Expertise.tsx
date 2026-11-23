@@ -34,18 +34,18 @@ export function Expertise() {
       <div className="shell" ref={ref}>
         <SectionHeader id="expertise-title" number="03" title={expertise.title} intro={expertise.intro} />
 
-        <div className="grid gap-px border-[1.5px] border-ink bg-ink sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-px border-[1.5px] border-ink bg-ink sm:grid-cols-2 xl:grid-cols-4 xl:grid-rows-[auto_1fr_auto]">
           {segmentOrder.map((segment, index) => {
             const block = expertise.segments[segment];
             return (
               <article
                 key={segment}
-                className="post flex flex-col bg-white"
+                className="post flex flex-col bg-white xl:row-span-3 xl:grid xl:grid-rows-subgrid xl:gap-0"
                 style={{ "--i": index } as CSSProperties}
                 aria-labelledby={`segment-${segment}`}
               >
                 <header className={cn("px-5 pb-6 pt-4", head[segment])}>
-                  <p className="tabular text-sm font-semibold opacity-80">3.{index + 1}</p>
+                  <p className="tabular text-sm font-semibold">3.{index + 1}</p>
                   <h3 id={`segment-${segment}`} className="wide mt-8 text-[1.5rem] font-bold leading-tight">
                     {t.segmentNames[segment]}
                   </h3>

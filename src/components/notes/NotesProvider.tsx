@@ -116,7 +116,10 @@ function NoteSheet({
 
   return (
     <div className="fixed inset-x-3 bottom-3 z-50 sm:inset-x-auto sm:bottom-5 sm:end-5 sm:w-[25.5rem]">
-      <div aria-hidden="true" className={cn("note-under absolute inset-0", underlay[meta.segment])} />
+      <div
+        aria-hidden="true"
+        className={cn("note-under absolute inset-0 border-[1.5px] border-ink", underlay[meta.segment])}
+      />
       <div
         ref={sheetRef}
         role="dialog"

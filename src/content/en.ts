@@ -195,14 +195,14 @@ export const en: Content = {
   },
   products: {
     title: "Products",
-    intro: "Software I designed, built and run under Pioneers.dev: what each product does, how it is built, and what isn't built yet.",
+    intro: "Software I designed, built and run under Pioneers.dev: what each product does, how it is built, and what isn't live yet.",
     labels: {
       status: "Status",
       role: "My role",
       system: "System",
       aiLegend: "AI component",
       built: "Built",
-      notBuilt: "Not built yet",
+      notBuilt: "Not live yet",
       layers: {
         users: "Who uses it",
         app: "Application",

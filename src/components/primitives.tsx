@@ -69,7 +69,7 @@ export function SectionHeader({
         <p
           className={cn(
             "max-w-xl text-[1.05rem] lg:col-span-4",
-            tone === "default" ? "text-ink-2" : tone === "inverse" ? "text-finance-mist" : "text-ink",
+            tone === "default" ? "text-ink-2" : tone === "inverse" ? "text-white" : "text-ink",
           )}
         >
           {intro}

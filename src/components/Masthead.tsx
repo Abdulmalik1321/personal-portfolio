@@ -67,7 +67,7 @@ export function Masthead() {
         <a href="#cover" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
           <BrandMark className="size-6 shrink-0" />
           <span className="wide truncate text-[1.02rem] font-bold tracking-[-0.01em]">{t.cover.name}</span>
-          <span lang={lang === "en" ? "ar" : "en"} className="hidden text-sm text-ink-2 3xl:inline">
+          <span lang={lang === "en" ? "ar" : "en"} className="hidden text-sm text-ink-2 min-[1360px]:inline">
             {t.cover.otherName}
           </span>
         </a>
@@ -115,13 +115,13 @@ export function Masthead() {
           </a>
           <button
             type="button"
-            className="inline-flex h-10 items-center gap-2 border-[1.5px] border-ink px-3 text-[0.95rem] font-semibold xl:hidden"
+            className="inline-flex h-10 min-w-10 items-center justify-center gap-2 border-[1.5px] border-ink px-2.5 text-[0.95rem] font-semibold sm:px-3 xl:hidden"
             aria-expanded={open}
             aria-controls="contents-panel"
             onClick={() => setOpen((value) => !value)}
           >
             {open ? <X className="size-4" aria-hidden="true" /> : <Menu className="size-4" aria-hidden="true" />}
-            {t.nav.contents}
+            <span className="sr-only sm:not-sr-only">{t.nav.contents}</span>
           </button>
         </div>
       </div>
